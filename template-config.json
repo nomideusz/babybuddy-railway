@@ -1,0 +1,48 @@
+{
+  "buckets": {},
+  "services": {
+    "0a3096be-9023-4b0f-a097-e49f378e8fce": {
+      "icon": "https://raw.githubusercontent.com/babybuddy/babybuddy/master/babybuddy/static_src/logo/icon.png",
+      "name": "babybuddy",
+      "deploy": {
+        "startCommand": null,
+        "healthcheckPath": "/login/",
+        "restartPolicyType": "ON_FAILURE",
+        "restartPolicyMaxRetries": 10
+      },
+      "source": {
+        "repo": "https://github.com/nomideusz/babybuddy-railway",
+        "rootDirectory": null
+      },
+      "variables": {
+        "PORT": {
+          "isOptional": false,
+          "description": "Port for Railway healthcheck probing. Do not change.",
+          "defaultValue": "8000"
+        },
+        "TZ": {
+          "isOptional": false,
+          "description": "Your time zone \u2014 timeline entries use it.",
+          "defaultValue": "UTC"
+        },
+        "CSRF_TRUSTED_ORIGINS": {
+          "isOptional": false,
+          "description": "Public URL for Django CSRF protection. Do not change.",
+          "defaultValue": "https://${{RAILWAY_PUBLIC_DOMAIN}}"
+        }
+      },
+      "networking": {
+        "serviceDomains": {
+          "<hasDomain>:8000": {
+            "port": 8000
+          }
+        }
+      },
+      "volumeMounts": {
+        "0a3096be-9023-4b0f-a097-e49f378e8fce": {
+          "mountPath": "/config"
+        }
+      }
+    }
+  }
+}

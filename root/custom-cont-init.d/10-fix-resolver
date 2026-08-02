@@ -1,0 +1,9 @@
+#!/bin/bash
+# LSIO's init-nginx writes nginx's resolver from /etc/resolv.conf but lets
+# 2-colon IPv6 addresses (Railway's fd12::10) through unbracketed, which
+# nginx parses as host:port -> [emerg] crashloop. Write it correctly; the
+# 'resolver' keyword being present makes init-nginx skip its own generation.
+RES=$(awk '$1=="nameserver" {ip=$2; if (ip ~ /:/) ip="["ip"]"; printf "%s ", ip}' /etc/resolv.conf)
+[[ -z "${RES// /}" ]] && RES="127.0.0.11"
+mkdir -p /config/nginx
+printf '# Auto-generated with IPv6 brackets for Railway.\n\nresolver %s valid=30s;\n' "${RES% }" >/config/nginx/resolver.conf
