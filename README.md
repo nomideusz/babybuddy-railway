@@ -1,6 +1,6 @@
 # Deploy and Host Baby Buddy on Railway
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template/babybuddy?utm_medium=integration&utm_source=button&utm_campaign=babybuddy)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template/baby-buddy?utm_medium=integration&utm_source=button&utm_campaign=babybuddy)
 
 [Baby Buddy](https://github.com/babybuddy/babybuddy) is a self-hosted baby tracker — log feedings, diaper changes, sleep, tummy time, pumping, growth, and temperature, and see it all on a timeline with charts. Caregivers share one account-protected instance, so parents, grandparents, and sitters stay in sync without handing data to an app company.
 
